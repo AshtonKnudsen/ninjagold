@@ -1,0 +1,30 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: silver;
+}
+form{
+    display: inline-block;
+    text-align: center;
+}
+form button{
+    height: 25px;
+    width: 100px;
+}
+form img{
+    height: 200px;
+    width: 200px;
+    display: block;
+}
+img{
+    height: 100px;
+    width: 100px;
+}
+#history{
+    height: 100px;
+    width: 300px;
+    overflow: auto;
+    background-color: white;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NGold</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'money/css/Ngold.css'%}" />
+    <script src=""></script>
+</head>
+<body>
+    <form action="makemoney/farm" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Farm">
+        <img src="{% static 'money/images/farm.png' %}">
+    </form>
+    <form action="makemoney/cave" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Cave">
+        <img src="{% static 'money/images/cave.png' %}">
+    </form>
+    <form action="makemoney/casino" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Casino">
+        <img src="{% static 'money/images/casino.png' %}">
+    </form>
+    <form action="makemoney/house" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="House">
+        <img src="{% static 'money/images/house.png' %}">
+    </form>
+    <img src="{% static 'money/images/smlogo.png' %}">
+    <span>{{request.session.money}}</span>
+    <img src="{% static 'money/images/gold.jpg' %}">
+    <span>Django unchained, make money!</span>
+    <div id="history">
+        {{request.session.count}}
+        {{request.session.history}}
+    </div>
+    <form action="/reset" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="reset">
+    </form>
+</body>
+</html>
