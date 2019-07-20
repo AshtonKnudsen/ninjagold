@@ -15,7 +15,7 @@ def index(request):
 def makemoney(request, name):
     context = {
         "cave" : request.session["money"] + randint(50,100),
-        "casino" : request.session["money"] + randint(-500,500),
+        "casino" : request.session["money"] + randint(-500,250),
         "house" : request.session["money"] + randint(5,20),
         "farm" : request.session["money"] + randint(10,25)
     }
@@ -28,7 +28,7 @@ def makemoney(request, name):
     if name == "house":
         request.session["history"].append('You found ' + str(context[name]) + ' gold under your couch! cool!')
     if name == "farm":
-        request.session["history"].append('You farmed some shit ' + str(context[name]) + ' gold')
+        request.session["history"].append('You farmed some products and sold them for ' + str(context[name]) + ' gold')
     return redirect("/", context)
 
 def reset(request):
