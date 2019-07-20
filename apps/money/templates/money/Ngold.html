@@ -34,10 +34,12 @@
     <span>{{request.session.money}}</span>
     <img src="{% static 'money/images/gold.jpg' %}">
     <span>Django unchained, make money!</span>
-    <div id="history">
+    <ul id="history">
         {{request.session.count}}
-        {{request.session.history}}
-    </div>
+            {% for events in request.session.history %}
+                <li>{{events}}</li>
+            {% endfor %}
+    </ul>
     <form action="/reset" method="POST">
         {% csrf_token %}
         <input type="submit" value="reset">
