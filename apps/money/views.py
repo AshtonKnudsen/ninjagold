@@ -22,13 +22,13 @@ def makemoney(request, name):
     request.session["money"] = context[name]
 
     if name == "cave":
-        request.session["history"].append('You found a cave and ' + str(context[name]) + ' GOLD!!')
+        request.session["history"].append('You found a cave and you now have ' + str(context[name]) + ' GOLD!!')
     if name == "casino":
-        request.session["history"].append('Gabling huh? ' + str(context[name]) + ' gold')
+        request.session["history"].append('Gabling huh? now you have ' + str(context[name]) + ' gold')
     if name == "house":
-        request.session["history"].append('You found ' + str(context[name]) + ' gold under your couch! cool!')
+        request.session["history"].append('You found some coins under the couch and now have ' + str(context[name]) + ' gold')
     if name == "farm":
-        request.session["history"].append('You farmed some products and sold them for ' + str(context[name]) + ' gold')
+        request.session["history"].append('You farmed some products and sold them ' + str(context[name]))
     return redirect("/", context)
 
 def reset(request):
