@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,42 +8,46 @@
     {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'money/css/Ngold.css'%}" />
-    <script src=""></script>
 </head>
+
 <body>
-    <form action="makemoney/farm" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Farm">
-        <img src="{% static 'money/images/farm.png' %}">
-    </form>
-    <form action="makemoney/cave" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Cave">
-        <img src="{% static 'money/images/cave.png' %}">
-    </form>
-    <form action="makemoney/casino" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Casino">
-        <img src="{% static 'money/images/casino.png' %}">
-    </form>
-    <form action="makemoney/house" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="House">
-        <img src="{% static 'money/images/house.png' %}">
-    </form>
-    <img src="{% static 'money/images/smlogo.png' %}">
-    <span>{{request.session.money}}</span>
-    <img src="{% static 'money/images/gold.jpg' %}">
-    <span>Django unchained, make money!</span>
-    <ul id="history">
-        {{request.session.count}}
+    <div style="margin-top:10%; margin-bottom:10%;">
+        <span style="font-size:25pt;">Money:  {{request.session.money}}</span>
+    </div>
+    <div>
+        <form action="makemoney/farm" method="POST">
+            {% csrf_token %}
+            <input class="farmButton" type="submit" value="Farm">
+            <img src="{% static 'money/images/farm.png' %}">
+        </form>
+        <form action="makemoney/cave" method="POST">
+            {% csrf_token %}
+            <input class="caveButton" type="submit" value="Cave">
+            <img src="{% static 'money/images/cave.png' %}">
+        </form>
+        <form action="makemoney/casino" method="POST">
+            {% csrf_token %}
+            <input class="casinoButton" type="submit" value="Casino">
+            <img src="{% static 'money/images/casino.png' %}">
+        </form>
+        <form action="makemoney/house" method="POST">
+            {% csrf_token %}
+            <input class="houseButton" type="submit" value="House">
+            <img src="{% static 'money/images/house.png' %}">
+        </form>
+    </div>
+    <div>
+        <ul id="history">
+            <span style="font-size: 20pt;"><span style="font-family: fantasy; color: lightslategrey;">Moves: </span>{{request.session.count}}</span>
             {% for events in request.session.history %}
-                <li>{{events}}</li>
+            <li>{{events}}</li>
             {% endfor %}
-    </ul>
-    <form action="/reset" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="reset">
-    </form>
+        </ul>
+        <form action="/reset" method="POST">
+            {% csrf_token %}
+            <input  class="resetButton" type="submit" value="Reset">
+        </form>
+    </div>
 </body>
+
 </html>
